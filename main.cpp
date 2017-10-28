@@ -4,28 +4,23 @@
 #include <fstream>
 
 #include <SFML/Graphics.hpp>
+#include "selene.h"
+#include "Engine.h"
+
 
 int main()
 {
-    std::unique_ptr<std::string> message;
-    message = std::make_unique<std::string>("Titties");
+    auto e = std::make_unique<xien::Engine>();
 
-    sf::RenderWindow window(sf::VideoMode(200, 200), message->c_str());
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
-    while (window.isOpen())
-    {
+    while (e->window->isOpen()) {
         sf::Event event;
-        while (window.pollEvent(event))
-        {
+        while (e->window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
-                window.close();
+                e->window->close();
         }
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+        e->window->clear();
+        e->window->display();
     }
 
     return 0;

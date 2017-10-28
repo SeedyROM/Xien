@@ -6,11 +6,17 @@
 
 #include <memory>
 #include <SFML/Graphics.hpp>
+#include "yaml-cpp/yaml.h"
 
 namespace xien {
     struct EngineConfig {
+        EngineConfig();
+        ~EngineConfig() = default;
+
+        void load();
 
         std::unique_ptr<std::string> configFilePath;
+        YAML::Node settings;
     };
 
     struct Engine {
