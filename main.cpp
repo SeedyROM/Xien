@@ -10,12 +10,14 @@ struct TestState : xien::BaseGameState {
     double t;
 
     TestState() : BaseGameState() {
+        t = 0;
+
         this->x.setPosition(10, 20);
         this->x.setFillColor(sf::Color(255, 0, 127));
         this->x.setRadius(200);
     }
 
-    void render() {
+    void render() override {
         x.setRadius(abs(static_cast<int>(cos(t) * 50.0f)) + 50.0f);
         x.setPosition(abs(static_cast<int>(cos(t) * 100.0f)), 20.0f);
         engine->window->draw(x);

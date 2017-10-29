@@ -5,7 +5,6 @@
 #include "Engine.h"
 #include "GameState.h"
 
-#include <iostream>
 #include <boost/filesystem.hpp>
 
 using namespace xien;
