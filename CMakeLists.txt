@@ -5,8 +5,9 @@ project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE_FILES main.cpp src/Engine.cpp src/Engine.h)
+set(SOURCE_FILES main.cpp src/Engine.cpp src/Engine.h src/GameState.cpp src/GameState.h)
 include_directories(src)
+
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
 # Add SFML
@@ -27,5 +28,13 @@ include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
 
-# Add selene
-include_directories(${CMAKE_SOURCE_DIR}/lib/selene/include)
+# Add LUA
+find_package(Lua "5.3" REQUIRED)
+if(Lua_FOUND)
+    include_directories(${LUA_INCLUDE_DIR})
+    target_link_libraries(${PROJECT_NAME} ${LUA_LIBRARIES})
+endif()
+
+# Add Sol2
+include_directories(${CMAKE_SOURCE_DIR}/lib/sol2/single/)
+set(SOURCE_FILES ${SOURCE_FILES} ${CMAKE_SOURCE_DIR}/lib/sol2/single/sol/sol.hpp)

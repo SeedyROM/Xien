@@ -3,6 +3,7 @@
 //
 
 #include "Engine.h"
+#include "GameState.h"
 
 #include <iostream>
 #include <boost/filesystem.hpp>
@@ -30,4 +31,12 @@ Engine::Engine() {
     auto height = this->config->settings["display"]["height"].as<int>();
     
     this->window->create(sf::VideoMode(width, height), "Xien Engine");
+
+    auto framerate_cap = this->config->settings["display"]["framerate_cap"].as<int>();
+    this->window->setFramerateLimit(framerate_cap);
+}
+
+void Engine::setState(BaseGameState* state) {
+    this->_state = state;
+    this->_state->engine = this;
 }

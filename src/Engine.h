@@ -9,6 +9,8 @@
 #include "yaml-cpp/yaml.h"
 
 namespace xien {
+    struct BaseGameState; // Forward declaration.
+
     struct EngineConfig {
         EngineConfig();
         ~EngineConfig() = default;
@@ -25,6 +27,10 @@ namespace xien {
 
         std::unique_ptr<sf::RenderWindow> window;
         std::unique_ptr<EngineConfig> config;
+
+        void setState(BaseGameState* state);
+    private:
+        BaseGameState* _state;
     };
 }
 
