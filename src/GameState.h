@@ -15,10 +15,10 @@ namespace xien {
     struct BaseGameState {
         Engine* engine;
 
-        std::function<void()> init;
-        std::function<void(const sf::Event)> handleInput;
-        std::function<void(const float)> update;
-        std::function<void()> render;
+        std::function<void()> _init;
+        std::function<void(const sf::Event)> _handleEvents;
+        std::function<void(const float)> _update;
+        std::function<void()> _render;
     };
 }
 

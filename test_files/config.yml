@@ -1,4 +1,4 @@
 display:
-  width: 800
-  height: 400
-  framerate_cap: 60
+  width: 1000
+  height: 500
+  frameRateCap: 60

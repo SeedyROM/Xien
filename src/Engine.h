@@ -28,7 +28,10 @@ namespace xien {
         std::unique_ptr<sf::RenderWindow> window;
         std::unique_ptr<EngineConfig> config;
 
+        BaseGameState* getState();
         void setState(BaseGameState* state);
+
+        void run();
     private:
         BaseGameState* _state;
     };
