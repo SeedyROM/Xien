@@ -9,12 +9,10 @@ struct TestState : xien::BaseGameState {
     sf::CircleShape x;
     double t;
 
-    TestState() {
+    TestState() : BaseGameState() {
         this->x.setPosition(10, 20);
         this->x.setFillColor(sf::Color(255, 0, 127));
         this->x.setRadius(200);
-
-        this->_render = std::bind(&TestState::render, this);
     }
 
     void render() {

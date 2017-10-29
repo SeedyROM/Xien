@@ -4,6 +4,7 @@ set(PROJECT_NAME Xien)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "-O3 -Wall -Werror -Wfatal-errors")
 
 set(SOURCE_FILES main.cpp src/Engine.cpp src/Engine.h src/GameState.cpp src/GameState.h)
 include_directories(src)
